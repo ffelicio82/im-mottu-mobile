@@ -1,0 +1,25 @@
+name: RUN TESTS AND COVERAGE
+
+on:
+  push:
+    branches:
+      - FEAT/*
+      - FEAT/*
+
+jobs:
+  verify-semantic-pull-request:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
+
+  verify-flutter:
+    uses: ./.github/workflows/flutter_package.yaml
+    with:
+      flutter_channel: stable
+      flutter_version: 3.24.1
+      min_coverage: 20
+
+  build:
+    needs: [verify-semantic-pull-request, verify-flutter]
+    runs-on: ubuntu-latest
+    steps:
+      - name: cleaned step
+        run: echo "cleaned step"
