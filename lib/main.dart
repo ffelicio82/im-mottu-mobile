@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,13 +10,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return GetMaterialApp.router(
+      title: 'Mottu - Marvel',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      getPages: [
+        GetPage(
+          name: '/',
+          page: () => const MyHomePage(title: 'Mottu - Marvel Demo Home Page'),
+        ),
+        GetPage(
+          name: '/splash-page',
+          page: () => const MyHomePage(title: 'Mottu - Marvel Splash Page'),
+        ),
+      ],
     );
   }
 }
