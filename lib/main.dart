@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      initialRoute: '/',
+      initialRoute: RouteEnum.home.path,
       getPages: Routes.routes,
     );
   }
